@@ -7,6 +7,9 @@ describe("Tela de login", () => {
     it("deve fazer login com sucesso", () => {
       cy.login("standard_user", "secret_sauce");
       cy.get(".product_label").should("contain.text", "Products");
+      //contains("inventory_item_name", "Sauce Labs Backpack").should(
+      // "be.visible"
+      //);
     });
   });
   context("Quando o usuário coloca senha inválida", () => {
