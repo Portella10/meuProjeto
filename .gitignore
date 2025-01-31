@@ -1,0 +1,28 @@
+# Cypress
+cypress/screenshots/
+cypress/videos/
+cypress/results/
+cypress/fixtures/
+cypress/downloads/
+cypress/reports/
+
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE specific files
+.vscode/
+.idea/
