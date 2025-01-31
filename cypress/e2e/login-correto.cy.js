@@ -5,17 +5,13 @@ describe("Tela de login", () => {
   });
   context("Quando o usuário insere nome e senha válidos", () => {
     it("deve fazer login com sucesso", () => {
-      cy.get('[data-test="username"]').type("standard_user");
-      cy.get('[data-test="password"]').type("secret_sauce");
-      cy.get("#login-button").click();
+      cy.login("standard_user", "secret_sauce");
       cy.get(".product_label").should("contain.text", "Products");
     });
   });
   context("Quando o usuário coloca senha inválida", () => {
     it("Deve apresentar uma mensagem de erro", () => {
-      cy.get('[data-test="username"]').type("standard_user");
-      cy.get('[data-test="password"]').type("joao");
-      cy.get("#login-button").click();
+      cy.login("standard_user", "joao");
       cy.get('[data-test="error"]').should(
         "contain.text",
         "Epic sadface: Username and password do not match any user in this service"
@@ -24,9 +20,7 @@ describe("Tela de login", () => {
   });
   context("Quando o usuário coloca nome inválido", () => {
     it("Deve apresentar erro", () => {
-      cy.get('[data-test="username"]').type("Joao");
-      cy.get('[data-test="password"]').type("secret_sauce");
-      cy.get("#login-button").click();
+      cy.login("Joao", "secret_sauce");
       cy.get('[data-test="error"]').should(
         "contain.text",
         "Epic sadface: Username and password do not match any user in this service"
