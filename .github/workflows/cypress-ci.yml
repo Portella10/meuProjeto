@@ -11,6 +11,9 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        containers: [1, 2]
 
     steps:
       - name: 📂 Checkout do código
