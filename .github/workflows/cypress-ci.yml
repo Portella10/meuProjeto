@@ -1,4 +1,4 @@
-name: Cypress Tests
+name: Cypress CI
 
 on:
   push:
@@ -25,4 +25,6 @@ jobs:
         run: npm install
 
       - name: 🚀 Executar testes Cypress
-        run: npx cypress run
+        run: npx cypress run --record --key $CYPRESS_RECORD_KEY
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
