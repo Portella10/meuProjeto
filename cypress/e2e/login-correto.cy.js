@@ -1,15 +1,12 @@
 /// <reference types="cypress" />
 describe("Tela de login", () => {
   beforeEach(() => {
-    cy.visit("/");
+    cy.visit(Cypress.config("baseUrl"));
   });
   context("Quando o usuário insere nome e senha válidos", () => {
     it("deve fazer login com sucesso", () => {
       cy.login("standard_user", "secret_sauce");
       cy.get(".product_label").should("contain.text", "Products");
-      //contains("inventory_item_name", "Sauce Labs Backpack").should(
-      // "be.visible"
-      //);
     });
   });
   context("Quando o usuário coloca senha inválida", () => {
