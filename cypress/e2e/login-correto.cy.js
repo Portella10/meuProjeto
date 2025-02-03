@@ -47,4 +47,12 @@ describe("Tela de login", () => {
       );
     });
   });
+  context("Fazer logout", () => {
+    it("Deve retornar a página de login", () => {
+      cy.visit("https://www.saucedemo.com/v1/inventory.html");
+      cy.get(".bm-burger-button > button").click();
+      cy.get("#logout_sidebar_link").contains("Logout").click();
+      cy.contains("LOGIN").should("be.visible");
+    });
+  });
 });
