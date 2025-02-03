@@ -13,7 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        containers: [1, 2]
+        browser: [chrome, electron]
+        container: [1, 2]
 
     steps:
       - name: 📂 Checkout do código
@@ -22,12 +23,12 @@ jobs:
       - name: ⚙️ Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: v22.13.1
+          node-version: 18
 
       - name: 📦 Instalar dependências
         run: npm install
 
       - name: 🚀 Executar testes Cypress
-        run: npx cypress run --record --key $CYPRESS_RECORD_KEY --parallel --group "Cypress Test"
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        run: npx cypress run --record --key $CYPRESS_RECORD_KEY --parallel --group "Cypress Test" --browser ${{ matrix.browser }}
