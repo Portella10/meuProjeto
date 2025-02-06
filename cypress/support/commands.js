@@ -29,3 +29,8 @@ Cypress.Commands.add("login", (nome, senha) => {
   cy.get('[data-test="password"]').type(senha);
   cy.get("#login-button").click();
 });
+Cypress.Commands.add("problem_user", (nome, senha) => {
+  cy.get('[data-test="username"]').type(nome);
+  cy.get('[data-test="password"]').type(senha);
+  cy.get("#login-button").click();
+});
