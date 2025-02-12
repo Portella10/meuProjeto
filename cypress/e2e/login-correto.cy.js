@@ -1,11 +1,15 @@
 /// <reference types="cypress" />
+import LoginPage from "../pageObjects/LoginPage";
+
 describe("Tela de login", () => {
   beforeEach(() => {
     cy.visit(Cypress.config("baseUrl"));
   });
   context("Quando o usuário insere nome e senha válidos", () => {
     it("deve fazer login com sucesso", () => {
-      cy.login("standard_user", "secret_sauce");
+      LoginPage.typeUsername("standard_user");
+      LoginPage.typePassword("secret_sauce");
+      LoginPage.clickLoginButton();
       cy.get(".product_label").should("contain.text", "Products");
     });
   });
